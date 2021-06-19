@@ -14,8 +14,18 @@ const UserSchema = new Schema(
             required: [ 'Email required' ],
             match: [ /.+\@.+\..+/, "Must be valid email syntax" ]
         },
-        thoughts: [],
-        friends: []
+        thoughts: [
+            {
+                type: Schema.ObjectId,
+                ref: 'Thought'
+            }
+        ],
+        friends: [
+            {
+                type: Schema.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
         toJSON: {
