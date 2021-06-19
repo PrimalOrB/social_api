@@ -33,7 +33,36 @@ const thoughtController = {
         .catch( err => res.status( 400 ).json( err ) )
     },
 
-    updateThought( { body }, res )
+    updateThought( { body, params }, res ){
+        Thought.findByIdAndUpdate(
+            params.id,
+            body, 
+            { 
+                new: true, 
+                runValidators: true 
+            } 
+        )
+        .then( dbThoughtData => {
+            if( !dbThoughtData ){
+                res.status( 404 ).json( { message: 'No thought found with this id!' } )
+            }
+            res.json( dbThoughtData )
+        } )
+        .catch( err => res.status( 400 ).json( err ) )
+    },
+
+    deleteThought( { params }, res ){
+        Thought.findByIdAndDelete(
+            params.id
+        )
+        .then( dbThoughtData => {
+            if( !dbThoughtData ){
+                res.status( 404 ).json( { message: 'No thought found with this id!' } )
+            }
+            res.json( dbThoughtData )
+        } )
+        .catch( err => res.status( 400 ).json( err ) )
+    }
 
 }
 
