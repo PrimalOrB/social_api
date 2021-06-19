@@ -3,7 +3,14 @@ const { User } = require( '../models' )
 const userController = {
     getUsers( req, res ) {
         User.find( {} )
-        .populate( 'user' )
+        .populate( {
+            path: 'friends',
+            select: '-__v'
+        } )
+        .populate( {
+            path: 'thoughts',
+            select: '-__v'
+        } )
         .select( '-__v' )
         .then( dbUserData => res.json( dbUserData ) )
         .catch( err => res.status( 400 ).json( err ) )
@@ -11,7 +18,14 @@ const userController = {
 
     getOneUser( { params }, res ) {
         User.findById( params.id )
-        .populate( 'user' )
+        .populate( {
+            path: 'friends',
+            select: '-__v'
+        } )
+        .populate( {
+            path: 'thoughts',
+            select: '-__v'
+        } )
         .select( '-__v' )
         .then( dbUserData => res.json( dbUserData ) )
         .catch( err => res.status( 400 ).json( err ) )

@@ -3,7 +3,7 @@ const dateFormat = require( '../utils/dateFormat' );
 
 const ThoughtSchema = new Schema(
     {
-        throughText: {
+        thoughtText: {
             type: String,
             required: true,
             minLength: 1,
@@ -20,7 +20,7 @@ const ThoughtSchema = new Schema(
             type: String,
             required: true
         },
-        replies: []
+        reactions: []
     },
     {
       toJSON: {
@@ -31,7 +31,7 @@ const ThoughtSchema = new Schema(
 );
 
 ThoughtSchema.virtual( 'reactionCount' ).get( function() {
-    return this.replies.length;
+    return this.reactions.length;
 } );
 
 
