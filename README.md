@@ -8,17 +8,12 @@ Express.js / Node.js / MongoDB / Mongoose back end application to serve API func
 
 ## Table Of Contents
 
-- [Screenshot](#screenshot)
 - [Usage](#usage)
 - [Videos](#videos)
 - [Built Using](#built)
 - [License](#license)
 - [Contribution](#contribution)
 - [Questions](#questions)
-
-## Screenshot
-![ezgif-7-399e606d311f](https://user-images.githubusercontent.com/69044956/120729118-57b79480-c4ac-11eb-8ecb-9003290dd747.gif)
-
 
 ## Usage
 
