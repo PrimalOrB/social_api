@@ -50,6 +50,7 @@ const userController = {
         .then( dbUserData => {
             if( !dbUserData ){
                 res.status( 404 ).json( { message: 'No user found with this id!' } )
+                return
             }
             res.json( dbUserData )
         } )
@@ -89,6 +90,7 @@ const userController = {
         .then( dbUserData => {
             if( !dbUserData ){
                 res.status( 404 ).json( { message: 'No user found with this id!' } )
+                return
             }
             // confirm name of original user
             const username = dbUserData.username
@@ -101,6 +103,7 @@ const userController = {
             .then( dbUserData => {
                 if( !dbUserData ){
                     res.status( 404 ).json( { message: 'No user found with this id!' } )
+                    return
                 }
                 // confirm the name of the friend user
                 const friend = dbUserData.username
@@ -120,6 +123,7 @@ const userController = {
         .then( dbUserData => {
             if( !dbUserData ){
                 res.status( 404 ).json( { message: 'No user found with this id!' } )
+                return
             }
             // confirm name of original user
             const username = dbUserData.username
@@ -132,6 +136,7 @@ const userController = {
             .then( dbUserData => {
                 if( !dbUserData ){
                     res.status( 404 ).json( { message: 'No user found with this id!' } )
+                    return
                 }
                 // confirm the name of the friend user
                 const friend = dbUserData.username
