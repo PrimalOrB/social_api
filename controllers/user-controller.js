@@ -1,4 +1,4 @@
-const { User } = require( '../models' )
+const { User, Thought } = require( '../models' )
 
 const userController = {
     getUsers( req, res ) {
@@ -61,8 +61,21 @@ const userController = {
         .then( dbUserData => {
             if( !dbUserData ){
                 res.status( 404 ).json( { message: 'No user found with this id!' } )
+                return
             }
-            res.json( dbUserData )
+            for( var i = 0; i < dbUserData.thoughts.length; i++ ){
+                console.log( `deleting thought ${dbUserData.thoughts[i]}` )
+                Thought.findByIdAndDelete( dbUserData.thoughts[i] )
+                .then( dbThoughtData => {
+                    if( !dbThoughtData ){
+                        res.status( 404 ).json( { message: 'No thought found with this id!' } )
+                        return
+                    }
+                    console.log( `thought deleted` )
+                } )
+                .catch( err => res.status( 400 ).json( err ) )
+                } 
+            res.json( 'User and thoughts removed' )
         } )
         .catch( err => res.status( 400 ).json( err ) )
     },
