@@ -46,7 +46,7 @@ https://drive.google.com/file/d/13pxG7oetVDbpnvGbCGq4oPMbE7HRm3se/view?usp=shari
 - [Node.js](https://nodejs.org/en/)
 - [Mongoose](https://www.npmjs.com/package/mongoose)
 - [Mongo DB](https://www.mongodb.com/)
-- [Node js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/)
 
 ## License
 
